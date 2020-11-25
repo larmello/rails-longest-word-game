@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+<br>
+  <div class="container">
+    <h1 class="ml-3 mt-4">New Game</h1>
+    <div class = "d-flex">
+      <ul class="list-inline ml-3">
+        <% @table.each do |letter| %>
+          <li class="list-inline-item"><spam class="badge badge-primary"><h2><%= letter %></h2></spam></li>
+        <% end -%>
+      </ul>
+      <br>
+    </div>
+    <div class="ml-3">
+      <h6>What is the longest word you can find?</h6>
+      <form action="/score" method="post">
+        <input type="text" name="word" class="form-control mb-2" style="width: 430px" value="<% params %>" placeholder="Enter your word">
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+        <%= hidden_field_tag :table, @table %>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
